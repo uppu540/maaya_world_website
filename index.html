@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Maya World — Step Into The Infinite</title>
+<meta name="description" content="Maya World is an immersive theme park of five surreal universes — Mirror Rooms, Space Galaxy, Flower Garden, Dreamscape and Magic Forest." />
+<meta name="theme-color" content="#050505" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --obsidian:#050505; --obsidian-soft:#0c0c0e;
+    --violet:#8b5cf6; --aurora:#10b981; --pearl:#f8fafc;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--obsidian);color:var(--pearl);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;border:0;cursor:pointer;background:transparent;color:inherit}
+  ::selection{background:rgba(139,92,246,.35);color:var(--pearl)}
+
+  .display{font-family:'Syne',sans-serif;font-weight:800;letter-spacing:-.02em;text-transform:uppercase}
+  .gradient-text{background:linear-gradient(100deg,var(--violet),var(--aurora));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .container{max-width:1240px;margin:0 auto;padding:0 24px}
+  @media (min-width:768px){.container{padding:0 40px}}
+
+  /* nav */
+  nav.top{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 24px;mix-blend-mode:difference}
+  @media (min-width:768px){nav.top{padding:20px 40px}}
+  nav .brand{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.04em;text-transform:uppercase}
+  nav .links{display:none;gap:40px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.25em}
+  @media (min-width:768px){nav .links{display:flex}}
+  nav .links a:hover{color:var(--violet)}
+  nav .cta{background:var(--pearl);color:var(--obsidian);padding:8px 20px;border-radius:999px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.2em;transition:.3s}
+  nav .cta:hover{background:var(--violet);color:var(--pearl)}
+
+  /* hero */
+  header.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 16px;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.5;will-change:transform;transition:transform .1s linear}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,5,5,.3),rgba(5,5,5,.4),var(--obsidian))}
+  .hero-inner{position:relative;z-index:10;max-width:1100px;animation:fadeUp 1s ease both}
+  .badge{display:inline-block;border:1px solid rgba(248,250,252,.2);background:rgba(248,250,252,.05);padding:6px 16px;border-radius:999px;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.3em;color:rgba(248,250,252,.8);backdrop-filter:blur(8px);margin-bottom:32px}
+  h1.hero-title{font-size:clamp(56px,12vw,144px);line-height:.9}
+  h1 .infinite{font-style:italic;display:block}
+  .hero-sub{max-width:560px;margin:32px auto 0;font-size:16px;font-weight:300;line-height:1.6;color:rgba(248,250,252,.7)}
+  @media (min-width:768px){.hero-sub{font-size:18px}}
+  .hero-cta{margin-top:40px;display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:center}
+  @media (min-width:640px){.hero-cta{flex-direction:row}}
+  .btn{padding:18px 40px;border-radius:999px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.2em;transition:.3s;display:inline-block}
+  .btn-primary{background:var(--violet);color:var(--pearl)}
+  .btn-primary:hover{transform:scale(1.05)}
+  .btn-outline{border:1px solid rgba(248,250,252,.2);color:var(--pearl)}
+  .btn-outline:hover{background:rgba(255,255,255,.1)}
+  .scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.4em;color:rgba(248,250,252,.4);animation:bob 2.5s ease-in-out infinite}
+
+  /* floating crystals */
+  .crystal{position:absolute;border-radius:999px;filter:blur(2px);z-index:5;pointer-events:none;animation:float 6s ease-in-out infinite}
+  .c1{left:10%;top:28%;width:12px;height:12px;background:var(--violet)}
+  .c2{right:12%;top:40%;width:8px;height:8px;background:var(--aurora);animation-delay:-1.5s;animation-duration:7s}
+  .c3{left:20%;bottom:30%;width:6px;height:6px;background:rgba(248,250,252,.7);animation-delay:-.8s;animation-duration:8s}
+
+  /* sections */
+  section{padding:128px 24px}
+  @media (min-width:768px){section{padding:128px 40px}}
+  .eyebrow{display:block;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.3em;color:var(--violet);margin-bottom:16px}
+  .eyebrow.aurora{color:var(--aurora)}
+  h2.section-title{font-size:clamp(40px,6vw,64px);font-style:italic;line-height:1.05}
+
+  /* zones */
+  .zones-head{display:flex;flex-direction:column;gap:32px;justify-content:space-between;margin-bottom:80px}
+  @media (min-width:768px){.zones-head{flex-direction:row;align-items:flex-end}}
+  .zones-head p{margin-top:24px;max-width:420px;color:rgba(248,250,252,.55)}
+  .zones-head .count{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:rgba(248,250,252,.3)}
+  .zones-grid{display:grid;grid-template-columns:1fr;gap:64px 24px}
+  @media (min-width:768px){.zones-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.zones-grid{grid-template-columns:repeat(3,1fr)}
+    .zones-grid > :nth-child(2n){margin-top:64px}}
+  .zone-card{text-align:left;width:100%;display:block}
+  .zone-card .img-wrap{position:relative;overflow:hidden;border-radius:16px;margin-bottom:24px}
+  .zone-card .img-wrap img{aspect-ratio:2/3;width:100%;object-fit:cover;transition:transform .9s ease}
+  .zone-card:hover .img-wrap img{transform:scale(1.06)}
+  .zone-card .img-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,.8),transparent);opacity:.6;transition:opacity .5s}
+  .zone-card:hover .img-wrap::after{opacity:.9}
+  .zone-num{position:absolute;left:16px;top:16px;background:rgba(5,5,5,.7);padding:4px 12px;border-radius:999px;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.25em;backdrop-filter:blur(8px);z-index:2}
+  .zone-hover{position:absolute;left:16px;right:16px;bottom:16px;display:flex;align-items:center;justify-content:space-between;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.25em;color:transparent;transform:translateY(8px);transition:.5s;z-index:2}
+  .zone-card:hover .zone-hover{transform:translateY(0);color:var(--pearl)}
+  .zone-meta{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+  .zone-meta h3{font-family:'Syne',sans-serif;font-weight:800;text-transform:uppercase;font-size:22px;letter-spacing:-.02em;transition:color .3s}
+  .zone-card:hover .zone-meta h3{color:var(--violet)}
+  .zone-meta p{margin-top:4px;font-size:14px;color:rgba(248,250,252,.45)}
+  .zone-arrow{flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(248,250,252,.2);border-radius:999px;font-size:13px;transition:.3s}
+  .zone-card[data-accent="violet"]:hover .zone-arrow{background:var(--violet);border-color:var(--violet)}
+  .zone-card[data-accent="aurora"]:hover .zone-arrow{background:var(--aurora);border-color:var(--aurora);color:var(--obsidian)}
+
+  /* experiences */
+  .experiences{border-top:1px solid rgba(248,250,252,.05);background:var(--obsidian-soft)}
+  .exp-head{display:grid;grid-template-columns:1fr;gap:32px;margin-bottom:64px}
+  @media (min-width:768px){.exp-head{grid-template-columns:1fr 1fr}}
+  .exp-head p{max-width:420px;color:rgba(248,250,252,.55);align-self:end;justify-self:end}
+  .exp-grid{display:grid;grid-template-columns:1fr;gap:1px;background:rgba(248,250,252,.05);border-radius:24px;overflow:hidden}
+  @media (min-width:640px){.exp-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1024px){.exp-grid{grid-template-columns:repeat(4,1fr)}}
+  .exp-card{position:relative;background:var(--obsidian);padding:40px;display:flex;flex-direction:column;justify-content:space-between;min-height:280px;overflow:hidden;transition:background .3s}
+  .exp-card:hover{background:var(--obsidian-soft)}
+  .exp-num{font-family:'Syne',sans-serif;font-weight:800;font-size:48px;color:rgba(248,250,252,.1);transition:color .3s}
+  .exp-card:hover .exp-num{color:rgba(139,92,246,.5)}
+  .exp-card h4{font-family:'Syne',sans-serif;font-weight:800;text-transform:uppercase;font-size:20px;margin-top:64px}
+  .exp-card p{margin-top:8px;font-size:14px;color:rgba(248,250,252,.55)}
+  .exp-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(to right,var(--violet),var(--aurora));transform:scaleX(0);transform-origin:left;transition:transform .5s}
+  .exp-card:hover::after{transform:scaleX(1)}
+
+  /* about */
+  .about-grid{margin-top:48px;display:grid;grid-template-columns:1fr;gap:48px;color:rgba(248,250,252,.6)}
+  @media (min-width:768px){.about-grid{grid-template-columns:1fr 1fr}}
+  .about-grid p{line-height:1.7}
+
+  /* booking */
+  .booking{background:var(--pearl);color:var(--obsidian);border-top-left-radius:48px;border-top-right-radius:48px}
+  @media (min-width:768px){.booking{border-top-left-radius:64px;border-top-right-radius:64px}}
+  .booking-inner{max-width:960px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .badge-purple{display:inline-block;background:rgba(139,92,246,.1);color:var(--violet);padding:6px 16px;border-radius:999px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3em;margin-bottom:24px}
+  .booking h2{font-size:clamp(48px,7vw,80px)}
+  .booking > .booking-inner > p{margin-top:16px;max-width:420px;color:rgba(5,5,5,.6)}
+  .plans{margin-top:64px;display:grid;grid-template-columns:1fr;gap:32px;width:100%}
+  @media (min-width:768px){.plans{grid-template-columns:1fr 1fr}}
+  .plan{text-align:left;padding:40px;border-radius:24px;border:1px solid rgba(5,5,5,.1);transition:.3s}
+  .plan:hover{transform:translateY(-4px);border-color:var(--violet);box-shadow:0 20px 40px -10px rgba(139,92,246,.1)}
+  .plan h4{font-family:'Syne',sans-serif;font-weight:800;text-transform:uppercase;font-size:20px}
+  .plan .blurb{margin-top:8px;font-size:14px;color:rgba(5,5,5,.6)}
+  .plan .price{margin-top:32px;display:flex;align-items:baseline;gap:8px}
+  .plan .price span:first-child{font-family:'Syne',sans-serif;font-weight:800;font-size:48px}
+  .plan .price span:last-child{color:rgba(5,5,5,.4)}
+  .plan ul{list-style:none;margin-top:24px;font-size:14px;color:rgba(5,5,5,.7);display:flex;flex-direction:column;gap:8px}
+  .plan .book-btn{margin-top:40px;width:100%;padding:16px;border-radius:12px;background:var(--obsidian);color:var(--pearl);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.25em;transition:.3s}
+  .plan .book-btn:hover{background:var(--violet)}
+  .plan.pro{position:relative;background:var(--obsidian);color:var(--pearl);box-shadow:0 30px 60px -20px rgba(139,92,246,.3)}
+  .plan.pro .blurb,.plan.pro ul{color:rgba(248,250,252,.7)}
+  .plan.pro .price span:last-child{color:rgba(248,250,252,.4)}
+  .plan.pro .book-btn{background:var(--violet)}
+  .plan.pro .book-btn:hover{transform:scale(1.02);background:var(--violet)}
+  .plan .ribbon{position:absolute;right:24px;top:24px;background:var(--aurora);color:var(--obsidian);padding:4px 12px;border-radius:999px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.25em}
+  .booking-foot{margin-top:48px;font-size:10px;text-transform:uppercase;letter-spacing:.3em;color:rgba(5,5,5,.4)}
+  .booking-foot a{color:var(--violet)}
+  .booking-foot a:hover{text-decoration:underline}
+
+  /* footer */
+  footer{border-top:1px solid rgba(248,250,252,.1);background:var(--obsidian);padding:80px 24px}
+  @media (min-width:768px){footer{padding:80px 40px}}
+  .foot-top{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;justify-content:space-between;gap:48px}
+  @media (min-width:768px){.foot-top{flex-direction:row;align-items:center}}
+  .foot-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:36px;letter-spacing:-.04em;text-transform:uppercase}
+  .foot-brand + p{margin-top:12px;max-width:280px;font-size:14px;color:rgba(248,250,252,.45)}
+  .foot-links{display:flex;flex-wrap:wrap;gap:32px;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.25em;color:rgba(248,250,252,.5)}
+  .foot-links a:hover{color:var(--pearl)}
+  .foot-bot{max-width:1240px;margin:64px auto 0;border-top:1px solid rgba(248,250,252,.05);padding-top:32px;display:flex;justify-content:space-between;font-size:10px;text-transform:uppercase;letter-spacing:.25em;color:rgba(248,250,252,.3)}
+  .foot-bot .italic{font-style:italic}
+
+  /* modal */
+  .modal-backdrop{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .3s}
+  .modal-backdrop.open{display:flex;opacity:1}
+  .modal{background:var(--obsidian);color:var(--pearl);border:1px solid rgba(248,250,252,.1);border-radius:24px;overflow:hidden;width:100%;max-width:1000px;max-height:90vh;display:grid;grid-template-columns:1fr;position:relative;transform:translateY(20px);transition:transform .4s ease}
+  .modal-backdrop.open .modal{transform:translateY(0)}
+  @media (min-width:768px){.modal{grid-template-columns:1.1fr 1fr;max-height:80vh}}
+  .modal-close{position:absolute;right:20px;top:20px;z-index:10;width:36px;height:36px;border-radius:999px;background:rgba(5,5,5,.7);border:1px solid rgba(248,250,252,.2);color:var(--pearl);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;font-size:18px}
+  .modal-carousel{position:relative;background:var(--obsidian-soft);overflow:hidden}
+  .slides{display:flex;height:100%;transition:transform .5s ease}
+  .slide{min-width:100%;height:100%}
+  .slide img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4}
+  @media (min-width:768px){.slide img{aspect-ratio:auto;height:640px}}
+  .slide-btn{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:999px;background:rgba(5,5,5,.6);border:1px solid rgba(248,250,252,.2);color:var(--pearl);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:5}
+  .slide-btn:hover{background:var(--violet)}
+  .slide-prev{left:12px}.slide-next{right:12px}
+  .modal-zone-label{position:absolute;left:16px;top:16px;background:rgba(5,5,5,.7);padding:4px 12px;border-radius:999px;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.25em;backdrop-filter:blur(8px);z-index:5}
+  .modal-body{padding:32px;overflow-y:auto;display:flex;flex-direction:column}
+  @media (min-width:768px){.modal-body{padding:40px}}
+  .modal-body h2{font-family:'Syne',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(32px,4vw,48px);letter-spacing:-.02em}
+  .modal-tag{margin-top:8px;font-size:14px}
+  .modal-tag.violet{color:var(--violet)}
+  .modal-tag.aurora{color:var(--aurora)}
+  .modal-body .desc{margin-top:24px;line-height:1.6;color:rgba(248,250,252,.7)}
+  .hl-title{margin-top:32px;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.3em;color:rgba(248,250,252,.4);display:block}
+  .hl-list{margin-top:16px;list-style:none;display:flex;flex-direction:column;gap:12px}
+  .hl-list li{display:flex;gap:12px;font-size:14px;color:rgba(248,250,252,.8)}
+  .hl-list li::before{content:"";flex-shrink:0;width:6px;height:6px;border-radius:999px;margin-top:7px;background:var(--violet)}
+  .modal[data-accent="aurora"] .hl-list li::before{background:var(--aurora)}
+  .stats{margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center;border-top:1px solid rgba(248,250,252,.1);border-bottom:1px solid rgba(248,250,252,.1);padding:20px 0}
+  .stat-val{font-family:'Syne',sans-serif;font-weight:800;text-transform:uppercase;font-size:14px}
+  .stat-lbl{margin-top:4px;font-size:9px;text-transform:uppercase;letter-spacing:.25em;color:rgba(248,250,252,.4)}
+  .modal-cta{margin-top:32px;width:100%;background:var(--violet);color:var(--pearl);padding:16px;border-radius:999px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.25em;transition:transform .3s}
+  .modal-cta:hover{transform:scale(1.01)}
+  .modal-foot{margin-top:12px;text-align:center;font-size:10px;text-transform:uppercase;letter-spacing:.25em;color:rgba(248,250,252,.35)}
+
+  /* animations */
+  @keyframes float{0%,100%{transform:translateY(0);opacity:.3}50%{transform:translateY(-20px);opacity:.8}}
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <span class="brand">Maya World</span>
+  <div class="links">
+    <a href="#zones">Zones</a>
+    <a href="#experiences">Experiences</a>
+    <a href="#booking">Booking</a>
+  </div>
+  <a href="#booking" class="cta">Get Tickets</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg">
+    <img id="heroImg" src="assets/hero.jpg" alt="Surreal landscape of violet clouds and floating crystals beneath an aurora" />
+  </div>
+  <div class="crystal c1"></div>
+  <div class="crystal c2"></div>
+  <div class="crystal c3"></div>
+
+  <div class="hero-inner">
+    <span class="badge">Immersive Experience Park</span>
+    <h1 class="display hero-title">
+      <span>Step Into</span>
+      <span class="infinite gradient-text">The Infinite</span>
+    </h1>
+    <p class="hero-sub">Five surreal universes engineered for storytelling, sensory wonder and the perfect shot. Welcome to Maya World.</p>
+    <div class="hero-cta">
+      <a href="#booking" class="btn btn-primary">Book Your Visit</a>
+      <a href="#zones" class="btn btn-outline">Explore Zones</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<!-- Zones -->
+<section id="zones">
+  <div class="container">
+    <div class="zones-head reveal">
+      <div>
+        <span class="eyebrow">The Universes</span>
+        <h2 class="display section-title">Each zone,<br/>a different world.</h2>
+        <p>Tap any zone to step inside — explore highlights, browse a gallery, and book in one click.</p>
+      </div>
+      <span class="count">01 — 05</span>
+    </div>
+
+    <div class="zones-grid" id="zonesGrid"></div>
+  </div>
+</section>
+
+<!-- Experiences -->
+<section id="experiences" class="experiences">
+  <div class="container">
+    <div class="exp-head reveal">
+      <div>
+        <span class="eyebrow aurora">Experiences</span>
+        <h2 class="display section-title">Built for the lens.<br/>Made for the memory.</h2>
+      </div>
+      <p>Whether you're shooting a campaign, capturing a celebration or simply chasing the perfect frame — Maya World is your canvas.</p>
+    </div>
+
+    <div class="exp-grid reveal">
+      <div class="exp-card"><span class="exp-num">01</span><div><h4>Photography</h4><p>Editorial portraits &amp; social content</p></div></div>
+      <div class="exp-card"><span class="exp-num">02</span><div><h4>Film &amp; Music Video</h4><p>Cinematic shoots with private windows</p></div></div>
+      <div class="exp-card"><span class="exp-num">03</span><div><h4>Family &amp; Friends</h4><p>An unforgettable group outing</p></div></div>
+      <div class="exp-card"><span class="exp-num">04</span><div><h4>Events &amp; Celebrations</h4><p>Birthdays, brand activations, parties</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section>
+  <div class="container" style="max-width:880px">
+    <div class="reveal">
+      <span class="eyebrow">The Vision</span>
+      <h2 class="display" style="font-size:clamp(32px,4.5vw,52px);font-style:italic;line-height:1.15">Maya World is a destination where reality is rewritten — built for photographers, filmmakers, families and dreamers who want to step beyond the everyday.</h2>
+    </div>
+    <div class="about-grid">
+      <p class="reveal">Every zone is crafted by artists, set designers and lighting technicians to feel cinematic from any angle. Bring a phone, a camera, or a full crew — the worlds are ready.</p>
+      <p class="reveal">Available for private bookings, brand activations, music videos and special occasions. Tell us your vision and we'll open the doors.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Booking -->
+<section id="booking" class="booking">
+  <div class="booking-inner reveal">
+    <span class="badge-purple">Instant Entry</span>
+    <h2 class="display">Secure Your Passage</h2>
+    <p>Tickets are timed and limited per slot. Advance booking is highly recommended.</p>
+
+    <div class="plans">
+      <div class="plan">
+        <h4>Day Explorer</h4>
+        <p class="blurb">Full access to all 5 standard zones and community areas.</p>
+        <div class="price"><span>$45</span><span>/ person</span></div>
+        <ul>
+          <li>— Entry to all 5 zones</li>
+          <li>— Personal photography allowed</li>
+          <li>— Digital gate-pass on email</li>
+        </ul>
+        <button class="book-btn">Book Day Explorer</button>
+      </div>
+      <div class="plan pro">
+        <span class="ribbon">Most Booked</span>
+        <h4>Creator Pass</h4>
+        <p class="blurb">Extended access plus a private shoot window in one selected zone.</p>
+        <div class="price"><span>$120</span><span>/ session</span></div>
+        <ul>
+          <li>— Everything in Day Explorer</li>
+          <li>— Tripod &amp; professional gear permit</li>
+          <li>— 45-minute private zone window</li>
+          <li>— Priority gate authentication</li>
+        </ul>
+        <button class="book-btn">Reserve Creator Pass</button>
+      </div>
+    </div>
+
+    <p class="booking-foot">Looking for film shoots or private buyouts? <a href="mailto:bookings@mayaworld.com">Contact our team</a></p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-brand">Maya World</div>
+      <p>The digital gateway to infinite realities.</p>
+    </div>
+    <div class="foot-links">
+      <a href="#zones">Zones</a>
+      <a href="#experiences">Experiences</a>
+      <a href="#booking">Booking</a>
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+      <a href="mailto:hello@mayaworld.com">Contact</a>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© <span id="year"></span> Maya World</span>
+    <span class="italic">Designed for the visionary</span>
+  </div>
+</footer>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true">
+  <div class="modal" id="modalBox">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <div class="modal-carousel">
+      <div class="slides" id="slides"></div>
+      <button class="slide-btn slide-prev" id="slidePrev" aria-label="Previous">‹</button>
+      <button class="slide-btn slide-next" id="slideNext" aria-label="Next">›</button>
+      <div class="modal-zone-label" id="modalZoneLabel"></div>
+    </div>
+    <div class="modal-body">
+      <h2 id="modalName"></h2>
+      <p class="modal-tag" id="modalTag"></p>
+      <p class="desc" id="modalDesc"></p>
+      <span class="hl-title">Highlights</span>
+      <ul class="hl-list" id="modalHighlights"></ul>
+      <div class="stats">
+        <div><div class="stat-val" id="statDuration"></div><div class="stat-lbl">Duration</div></div>
+        <div><div class="stat-val" id="statCapacity"></div><div class="stat-lbl">Capacity</div></div>
+        <div><div class="stat-val" id="statLight"></div><div class="stat-lbl">Light</div></div>
+      </div>
+      <button class="modal-cta" id="modalBook">Book Tickets →</button>
+      <p class="modal-foot">Instant gate-pass · No queues</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const zones = [
+    {number:"01",name:"Mirror Rooms",tagline:"Infinite reflections & kaleidoscopic illusions",accent:"violet",
+     description:"A labyrinth of symmetry where light folds back on itself a thousand times. Engineered for dreamy portraits, editorial depth, and content that feels endless.",
+     images:[{src:"assets/zone-mirror.jpg",alt:"Mirror room with neon corridors"},{src:"assets/zone-mirror-2.jpg",alt:"Fragmented violet reflections"},{src:"assets/zone-mirror-3.jpg",alt:"Silhouette in pink portal hallway"}],
+     highlights:["Six interconnected mirrored chambers with custom-tuned light walls","Programmable color modes — choose magenta, violet, ice or aurora","Tripod-friendly floor markers for perfect symmetrical shots","Sound-reactive lighting available for video shoots"],
+     meta:{duration:"20 min",capacity:"1–6 pax",light:"Neon"}},
+    {number:"02",name:"Space Galaxy",tagline:"Cosmic projections & astral backdrops",accent:"aurora",
+     description:"Step off-world into a chamber of neon planets, drifting nebulae and fiber-optic starfields tuned for cinematic capture.",
+     images:[{src:"assets/zone-space.jpg",alt:"Space room with planets and nebulae"},{src:"assets/zone-space-2.jpg",alt:"Glowing moon sphere"},{src:"assets/zone-space-3.jpg",alt:"Astronaut silhouette in starfield"}],
+     highlights:["360° nebula projection mapping across walls and ceiling","Suspended moon sculpture & rotating planet props","Fiber-optic starfield floor — walk on the cosmos","Free astronaut helmet prop on request"],
+     meta:{duration:"25 min",capacity:"1–8 pax",light:"Astral"}},
+    {number:"03",name:"Flower Garden",tagline:"Lush florals & romantic light",accent:"violet",
+     description:"An enchanted garden of cascading blossoms and soft, golden-hour lighting — the natural studio for tender, sunlit shoots.",
+     images:[{src:"assets/zone-flower.jpg",alt:"Pink rose flower wall"},{src:"assets/zone-flower-2.jpg",alt:"Hanging floral chandelier"},{src:"assets/zone-flower-3.jpg",alt:"Garden swing among roses"}],
+     highlights:["Floor-to-ceiling living floral walls refreshed weekly","Vintage garden swing & wrought-iron archway","Tunable warm/cool lighting for golden-hour at any time","Perfect for engagement, maternity and bridal sessions"],
+     meta:{duration:"30 min",capacity:"1–4 pax",light:"Golden"}},
+    {number:"04",name:"Dreamscape",tagline:"Surreal clouds & weightless wonder",accent:"aurora",
+     description:"A room filled with clouds and pastel skies. Sculptural, soft and surreal — designed to make every frame feel like a memory.",
+     images:[{src:"assets/zone-dream.jpg",alt:"Cloud-filled pink room"},{src:"assets/zone-dream-2.jpg",alt:"Crescent moon and pastel clouds"},{src:"assets/zone-dream-3.jpg",alt:"Cloud swing in a pastel sky room"}],
+     highlights:["Knee-deep cloud floor — walk through actual softness","Floating crescent moon prop and cloud-swing seat","Gradient walls that shift from sunrise to dusk","Cinematic wind machine for ethereal hair flow"],
+     meta:{duration:"20 min",capacity:"1–5 pax",light:"Pastel"}},
+    {number:"05",name:"Magic Forest",tagline:"Bioluminescent woodland & fantasy props",accent:"violet",
+     description:"An ethereal forest of glowing mushrooms, moss and oversized props. A storybook universe rendered in living light.",
+     images:[{src:"assets/zone-forest.jpg",alt:"Giant glowing magic mushrooms"},{src:"assets/zone-forest-2.jpg",alt:"Lantern-lit forest path"},{src:"assets/zone-forest-3.jpg",alt:"Emerald fairy throne in misty forest"}],
+     highlights:["Hand-sculpted bioluminescent mushrooms up to 9 feet tall","Lantern-lit forest path with low-lying mist effects","Throne of vines for fantasy and editorial portraits","Costume rentals — cloaks, crowns and fairy wings"],
+     meta:{duration:"30 min",capacity:"1–6 pax",light:"Emerald"}}
+  ];
+
+  // Render zone cards
+  const grid = document.getElementById('zonesGrid');
+  zones.forEach((z,i)=>{
+    const btn = document.createElement('button');
+    btn.className = 'zone-card reveal';
+    btn.dataset.accent = z.accent;
+    btn.style.transitionDelay = (i%3)*100 + 'ms';
+    btn.innerHTML = `
+      <div class="img-wrap">
+        <img src="${z.images[0].src}" alt="${z.images[0].alt}" loading="lazy" />
+        <span class="zone-num">${z.number}</span>
+        <div class="zone-hover"><span>View Experience</span><span>→</span></div>
+      </div>
+      <div class="zone-meta">
+        <div><h3>${z.name}</h3><p>${z.tagline}</p></div>
+        <div class="zone-arrow">→</div>
+      </div>`;
+    btn.addEventListener('click',()=>openModal(i));
+    grid.appendChild(btn);
+  });
+
+  // Modal
+  const modal = document.getElementById('modal');
+  const modalBox = document.getElementById('modalBox');
+  const slidesEl = document.getElementById('slides');
+  let currentZone = 0, currentSlide = 0;
+
+  function openModal(idx){
+    currentZone = idx; currentSlide = 0;
+    const z = zones[idx];
+    modalBox.dataset.accent = z.accent;
+    document.getElementById('modalZoneLabel').textContent = 'Zone ' + z.number;
+    document.getElementById('modalName').textContent = z.name;
+    const tag = document.getElementById('modalTag');
+    tag.textContent = z.tagline;
+    tag.className = 'modal-tag ' + z.accent;
+    document.getElementById('modalDesc').textContent = z.description;
+    const hl = document.getElementById('modalHighlights');
+    hl.innerHTML = z.highlights.map(h=>`<li>${h}</li>`).join('');
+    document.getElementById('statDuration').textContent = z.meta.duration;
+    document.getElementById('statCapacity').textContent = z.meta.capacity;
+    document.getElementById('statLight').textContent = z.meta.light;
+    slidesEl.innerHTML = z.images.map(im=>`<div class="slide"><img src="${im.src}" alt="${im.alt}"/></div>`).join('');
+    slidesEl.style.transform = 'translateX(0%)';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){ modal.classList.remove('open'); document.body.style.overflow=''; }
+  function goSlide(d){
+    const z = zones[currentZone];
+    currentSlide = (currentSlide + d + z.images.length) % z.images.length;
+    slidesEl.style.transform = `translateX(-${currentSlide*100}%)`;
+  }
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown', e=>{
+    if(!modal.classList.contains('open')) return;
+    if(e.key==='Escape') closeModal();
+    if(e.key==='ArrowLeft') goSlide(-1);
+    if(e.key==='ArrowRight') goSlide(1);
+  });
+  document.getElementById('slidePrev').addEventListener('click', ()=>goSlide(-1));
+  document.getElementById('slideNext').addEventListener('click', ()=>goSlide(1));
+  document.getElementById('modalBook').addEventListener('click', ()=>{
+    closeModal();
+    requestAnimationFrame(()=>document.getElementById('booking').scrollIntoView({behavior:'smooth'}));
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }});
+  },{rootMargin:'-60px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Hero parallax
+  const heroImg = document.getElementById('heroImg');
+  window.addEventListener('scroll', ()=>{
+    const y = window.scrollY;
+    if(y < 900 && heroImg){
+      const scale = 1 + Math.min(y/800,1)*0.15;
+      const ty = Math.min(y*0.25, 200);
+      const op = Math.max(1 - y/600, 0);
+      heroImg.style.transform = `translateY(${ty}px) scale(${scale})`;
+      heroImg.style.opacity = (0.5*op).toFixed(2);
+    }
+  },{passive:true});
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
