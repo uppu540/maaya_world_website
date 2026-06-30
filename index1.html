@@ -28,13 +28,11 @@
   @media (min-width:768px){.container{padding:0 40px}}
 
   /* nav */
-  nav.top{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 24px;transition:background .4s ease, border-color .4s ease, padding .3s ease, backdrop-filter .4s ease;border-bottom:1px solid transparent}
-  @media (min-width:768px){nav.top{padding:24px 40px}}
-  nav.top.scrolled{background:rgba(5,5,5,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:rgba(248,250,252,.08);padding-top:14px;padding-bottom:14px}
-  nav .brand{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.04em;text-transform:uppercase;color:var(--pearl)}
-  nav .links{display:none;gap:40px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.25em;color:var(--pearl)}
+  nav.top{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px 24px;mix-blend-mode:difference}
+  @media (min-width:768px){nav.top{padding:20px 40px}}
+  nav .brand{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.04em;text-transform:uppercase}
+  nav .links{display:none;gap:40px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.25em}
   @media (min-width:768px){nav .links{display:flex}}
-  nav .links a{transition:color .3s}
   nav .links a:hover{color:var(--violet)}
   nav .cta{background:var(--pearl);color:var(--obsidian);padding:8px 20px;border-radius:999px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.2em;transition:.3s}
   nav .cta:hover{background:var(--violet);color:var(--pearl)}
@@ -120,62 +118,34 @@
   @media (min-width:768px){.about-grid{grid-template-columns:1fr 1fr}}
   .about-grid p{line-height:1.7}
 
-  /* about */
-  .about-wrap{display:grid;grid-template-columns:1fr;gap:64px;align-items:center}
-  @media (min-width:900px){.about-wrap{grid-template-columns:1.05fr 1fr}}
-  .about-copy .eyebrow{margin-bottom:16px}
-  .about-copy h2{font-size:clamp(40px,6vw,64px);font-style:italic;line-height:1.05}
-  .about-copy p{margin-top:24px;color:rgba(248,250,252,.6);line-height:1.75;max-width:520px}
-  .about-stats{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:520px}
-  .about-stat{padding:20px 16px;border:1px solid rgba(248,250,252,.08);border-radius:16px;background:rgba(248,250,252,.02)}
-  .about-stat .v{font-family:'Syne',sans-serif;font-weight:800;font-size:28px;background:linear-gradient(100deg,var(--violet),var(--aurora));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .about-stat .l{margin-top:6px;font-size:10px;text-transform:uppercase;letter-spacing:.25em;color:rgba(248,250,252,.5)}
-  .about-visual{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
-  .about-visual img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
-  .about-visual:hover img{transform:scale(1.05)}
-  .about-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,transparent 40%,rgba(139,92,246,.25))}
-
-  /* testimonials */
-  .testimonials{background:var(--obsidian-soft);border-top:1px solid rgba(248,250,252,.05);border-bottom:1px solid rgba(248,250,252,.05)}
-  .t-head{text-align:center;margin-bottom:72px}
-  .t-head h2{font-size:clamp(40px,6vw,64px);font-style:italic;line-height:1.05;margin-top:8px}
-  .t-grid{display:grid;grid-template-columns:1fr;gap:24px}
-  @media (min-width:768px){.t-grid{grid-template-columns:repeat(3,1fr)}}
-  .t-card{position:relative;padding:36px 32px;border-radius:24px;border:1px solid rgba(248,250,252,.08);background:linear-gradient(180deg,rgba(248,250,252,.03),rgba(248,250,252,.01));transition:.4s}
-  .t-card:hover{transform:translateY(-6px);border-color:rgba(139,92,246,.35);box-shadow:0 30px 60px -25px rgba(139,92,246,.25)}
-  .t-quote{font-family:'Syne',sans-serif;font-weight:800;font-size:56px;line-height:1;color:var(--violet);opacity:.5}
-  .t-text{margin-top:12px;font-size:15px;line-height:1.65;color:rgba(248,250,252,.85);font-style:italic}
-  .t-author{margin-top:24px;display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid rgba(248,250,252,.08)}
-  .t-avatar{width:42px;height:42px;border-radius:999px;background:linear-gradient(135deg,var(--violet),var(--aurora));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:var(--pearl);font-size:14px}
-  .t-name{font-size:13px;font-weight:600;color:var(--pearl)}
-  .t-role{font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:rgba(248,250,252,.4);margin-top:2px}
-
-  /* contact */
-  #contact{background:var(--pearl);color:var(--obsidian);border-top-left-radius:48px;border-top-right-radius:48px}
-  @media (min-width:768px){#contact{border-top-left-radius:64px;border-top-right-radius:64px}}
-  .contact-wrap{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:64px}
-  @media (min-width:900px){.contact-wrap{grid-template-columns:1fr 1.1fr}}
-  .contact-intro .badge-purple{display:inline-block;background:rgba(139,92,246,.1);color:var(--violet);padding:6px 16px;border-radius:999px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3em;margin-bottom:24px}
-  .contact-intro h2{font-size:clamp(40px,6vw,64px);font-style:italic;line-height:1.05}
-  .contact-intro p{margin-top:20px;color:rgba(5,5,5,.6);line-height:1.7;max-width:420px}
-  .contact-info{margin-top:40px;display:flex;flex-direction:column;gap:20px}
-  .ci-row{display:flex;gap:16px;align-items:flex-start}
-  .ci-ic{flex-shrink:0;width:42px;height:42px;border-radius:12px;background:var(--obsidian);color:var(--pearl);display:flex;align-items:center;justify-content:center;font-size:16px}
-  .ci-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.25em;color:rgba(5,5,5,.45)}
-  .ci-val{margin-top:4px;font-size:15px;color:var(--obsidian);font-weight:500}
-  .ci-val a{color:var(--violet)}
-  .contact-form{background:var(--obsidian);color:var(--pearl);padding:40px;border-radius:24px;display:flex;flex-direction:column;gap:18px;box-shadow:0 40px 80px -30px rgba(139,92,246,.4)}
-  .contact-form .row{display:grid;grid-template-columns:1fr;gap:18px}
-  @media (min-width:560px){.contact-form .row{grid-template-columns:1fr 1fr}}
-  .field{display:flex;flex-direction:column;gap:8px}
-  .field label{font-size:10px;text-transform:uppercase;letter-spacing:.25em;color:rgba(248,250,252,.5)}
-  .field input,.field select,.field textarea{background:rgba(248,250,252,.05);border:1px solid rgba(248,250,252,.1);border-radius:12px;padding:14px 16px;color:var(--pearl);font:inherit;font-size:14px;transition:.3s;font-family:'Inter',sans-serif}
-  .field textarea{resize:vertical;min-height:120px}
-  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--violet);background:rgba(139,92,246,.08)}
-  .submit-btn{margin-top:8px;background:var(--violet);color:var(--pearl);padding:16px;border-radius:999px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.25em;transition:.3s}
-  .submit-btn:hover{transform:scale(1.01);background:#7c3aed}
-  .form-success{display:none;padding:14px 16px;border-radius:12px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.4);color:var(--aurora);font-size:13px}
-  .form-success.show{display:block}
+  /* booking */
+  .booking{background:var(--pearl);color:var(--obsidian);border-top-left-radius:48px;border-top-right-radius:48px}
+  @media (min-width:768px){.booking{border-top-left-radius:64px;border-top-right-radius:64px}}
+  .booking-inner{max-width:960px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .badge-purple{display:inline-block;background:rgba(139,92,246,.1);color:var(--violet);padding:6px 16px;border-radius:999px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3em;margin-bottom:24px}
+  .booking h2{font-size:clamp(48px,7vw,80px)}
+  .booking > .booking-inner > p{margin-top:16px;max-width:420px;color:rgba(5,5,5,.6)}
+  .plans{margin-top:64px;display:grid;grid-template-columns:1fr;gap:32px;width:100%}
+  @media (min-width:768px){.plans{grid-template-columns:1fr 1fr}}
+  .plan{text-align:left;padding:40px;border-radius:24px;border:1px solid rgba(5,5,5,.1);transition:.3s}
+  .plan:hover{transform:translateY(-4px);border-color:var(--violet);box-shadow:0 20px 40px -10px rgba(139,92,246,.1)}
+  .plan h4{font-family:'Syne',sans-serif;font-weight:800;text-transform:uppercase;font-size:20px}
+  .plan .blurb{margin-top:8px;font-size:14px;color:rgba(5,5,5,.6)}
+  .plan .price{margin-top:32px;display:flex;align-items:baseline;gap:8px}
+  .plan .price span:first-child{font-family:'Syne',sans-serif;font-weight:800;font-size:48px}
+  .plan .price span:last-child{color:rgba(5,5,5,.4)}
+  .plan ul{list-style:none;margin-top:24px;font-size:14px;color:rgba(5,5,5,.7);display:flex;flex-direction:column;gap:8px}
+  .plan .book-btn{margin-top:40px;width:100%;padding:16px;border-radius:12px;background:var(--obsidian);color:var(--pearl);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.25em;transition:.3s}
+  .plan .book-btn:hover{background:var(--violet)}
+  .plan.pro{position:relative;background:var(--obsidian);color:var(--pearl);box-shadow:0 30px 60px -20px rgba(139,92,246,.3)}
+  .plan.pro .blurb,.plan.pro ul{color:rgba(248,250,252,.7)}
+  .plan.pro .price span:last-child{color:rgba(248,250,252,.4)}
+  .plan.pro .book-btn{background:var(--violet)}
+  .plan.pro .book-btn:hover{transform:scale(1.02);background:var(--violet)}
+  .plan .ribbon{position:absolute;right:24px;top:24px;background:var(--aurora);color:var(--obsidian);padding:4px 12px;border-radius:999px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.25em}
+  .booking-foot{margin-top:48px;font-size:10px;text-transform:uppercase;letter-spacing:.3em;color:rgba(5,5,5,.4)}
+  .booking-foot a{color:var(--violet)}
+  .booking-foot a:hover{text-decoration:underline}
 
   /* footer */
   footer{border-top:1px solid rgba(248,250,252,.1);background:var(--obsidian);padding:80px 24px}
@@ -234,16 +204,14 @@
 </head>
 <body>
 
-<nav class="top" id="topNav">
+<nav class="top">
   <span class="brand">Maya World</span>
   <div class="links">
     <a href="#zones">Zones</a>
     <a href="#experiences">Experiences</a>
-    <a href="#about">About</a>
-    <a href="#testimonials">Stories</a>
-    <a href="#contact">Contact</a>
+    <a href="#booking">Booking</a>
   </div>
-  <a href="#contact" class="cta">Get Tickets</a>
+  <a href="#booking" class="cta">Get Tickets</a>
 </nav>
 
 <header class="hero">
@@ -255,14 +223,14 @@
   <div class="crystal c3"></div>
 
   <div class="hero-inner">
-    <span class="badge">Immersive Experience Park</span>
+    <!-- <span class="badge">Immersive Experience Park</span> -->
     <h1 class="display hero-title">
       <span>Step Into</span>
       <span class="infinite gradient-text">The Infinite</span>
     </h1>
     <p class="hero-sub">Five surreal universes engineered for storytelling, sensory wonder and the perfect shot. Welcome to Maya World.</p>
     <div class="hero-cta">
-      <a href="#contact" class="btn btn-primary">Book Your Visit</a>
+      <a href="#booking" class="btn btn-primary">Book Your Visit</a>
       <a href="#zones" class="btn btn-outline">Explore Zones</a>
     </div>
   </div>
@@ -307,112 +275,54 @@
 </section>
 
 <!-- About -->
-<section id="about">
-  <div class="container">
-    <div class="about-wrap">
-      <div class="about-copy reveal">
-        <span class="eyebrow">About Maya World</span>
-        <h2 class="display">Reality,<br/>rewritten.</h2>
-        <p>Maya World is a one-of-a-kind immersive destination where art, light and architecture collide. Each universe is hand-crafted by a team of set designers, lighting technicians and visual artists to feel cinematic from every angle.</p>
-        <p>Whether you arrive with a phone, a camera or a full crew — the worlds are ready for your story.</p>
-        <div class="about-stats">
-          <div class="about-stat"><div class="v">05</div><div class="l">Surreal Zones</div></div>
-          <div class="about-stat"><div class="v">120k+</div><div class="l">Visitors</div></div>
-          <div class="about-stat"><div class="v">4.9★</div><div class="l">Avg Rating</div></div>
-        </div>
-      </div>
-      <div class="about-visual reveal">
-        <img src="assets/zone-dream.jpg" alt="Surreal pastel dreamscape inside Maya World" loading="lazy" />
-      </div>
+<section>
+  <div class="container" style="max-width:880px">
+    <div class="reveal">
+      <span class="eyebrow">The Vision</span>
+      <h2 class="display" style="font-size:clamp(32px,4.5vw,52px);font-style:italic;line-height:1.15">Maya World is a destination where reality is rewritten — built for photographers, filmmakers, families and dreamers who want to step beyond the everyday.</h2>
+    </div>
+    <div class="about-grid">
+      <p class="reveal">Every zone is crafted by artists, set designers and lighting technicians to feel cinematic from any angle. Bring a phone, a camera, or a full crew — the worlds are ready.</p>
+      <p class="reveal">Available for private bookings, brand activations, music videos and special occasions. Tell us your vision and we'll open the doors.</p>
     </div>
   </div>
 </section>
 
-<!-- Testimonials -->
-<section id="testimonials" class="testimonials">
-  <div class="container">
-    <div class="t-head reveal">
-      <span class="eyebrow aurora">Visitor Stories</span>
-      <h2 class="display">Words from<br/>the dreamers.</h2>
-    </div>
-    <div class="t-grid">
-      <div class="t-card reveal">
-        <div class="t-quote">"</div>
-        <p class="t-text">Walking into the Mirror Rooms felt like falling into another dimension. Every frame I shot felt like a magazine cover. Easily the best photoshoot location I've ever booked.</p>
-        <div class="t-author">
-          <div class="t-avatar">AR</div>
-          <div><div class="t-name">Ananya Reddy</div><div class="t-role">Fashion Photographer</div></div>
-        </div>
-      </div>
-      <div class="t-card reveal" style="transition-delay:120ms">
-        <div class="t-quote">"</div>
-        <p class="t-text">We booked a Creator Pass for our music video and the Space Galaxy zone delivered cinematic visuals we couldn't have built on a studio budget. The crew was incredibly accommodating.</p>
-        <div class="t-author">
-          <div class="t-avatar">JM</div>
-          <div><div class="t-name">Jay Malhotra</div><div class="t-role">Director, Wavelength Films</div></div>
-        </div>
-      </div>
-      <div class="t-card reveal" style="transition-delay:240ms">
-        <div class="t-quote">"</div>
-        <p class="t-text">Took my daughter for her birthday and watched her eyes light up in every single zone. The Magic Forest is pure storybook magic. We will be back. Many times.</p>
-        <div class="t-author">
-          <div class="t-avatar">SK</div>
-          <div><div class="t-name">Sara Khan</div><div class="t-role">Visitor</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- Booking -->
+<section id="booking" class="booking">
+  <div class="booking-inner reveal">
+    <span class="badge-purple">Instant Entry</span>
+    <h2 class="display">Secure Your Passage</h2>
+    <p>Tickets are timed and limited per slot. Advance booking is highly recommended.</p>
 
-<!-- Contact -->
-<section id="contact">
-  <div class="contact-wrap">
-    <div class="contact-intro reveal">
-      <span class="badge-purple">Get In Touch</span>
-      <h2 class="display">Let's plan<br/>your visit.</h2>
-      <p>Reserve a ticket, ask about private buyouts, film shoots or brand activations — our team is ready to help craft your experience.</p>
-      <div class="contact-info">
-        <div class="ci-row">
-          <div class="ci-ic">✉</div>
-          <div><div class="ci-lbl">Email</div><div class="ci-val"><a href="mailto:hello@mayaworld.com">hello@mayaworld.com</a></div></div>
-        </div>
-        <div class="ci-row">
-          <div class="ci-ic">☏</div>
-          <div><div class="ci-lbl">Phone</div><div class="ci-val">+91 98 1234 5678</div></div>
-        </div>
-        <div class="ci-row">
-          <div class="ci-ic">◎</div>
-          <div><div class="ci-lbl">Location</div><div class="ci-val">Maya World Park, Phase 3,<br/>Hyderabad, India</div></div>
-        </div>
-        <div class="ci-row">
-          <div class="ci-ic">⌖</div>
-          <div><div class="ci-lbl">Hours</div><div class="ci-val">Tue – Sun · 10am – 10pm</div></div>
-        </div>
+    <div class="plans">
+      <div class="plan">
+        <h4>Day Explorer</h4>
+        <p class="blurb">Full access to all 5 standard zones and community areas.</p>
+        <div class="price"><span>$45</span><span>/ person</span></div>
+        <ul>
+          <li>— Entry to all 5 zones</li>
+          <li>— Personal photography allowed</li>
+          <li>— Digital gate-pass on email</li>
+        </ul>
+        <button class="book-btn">Book Day Explorer</button>
+      </div>
+      <div class="plan pro">
+        <span class="ribbon">Most Booked</span>
+        <h4>Creator Pass</h4>
+        <p class="blurb">Extended access plus a private shoot window in one selected zone.</p>
+        <div class="price"><span>$120</span><span>/ session</span></div>
+        <ul>
+          <li>— Everything in Day Explorer</li>
+          <li>— Tripod &amp; professional gear permit</li>
+          <li>— 45-minute private zone window</li>
+          <li>— Priority gate authentication</li>
+        </ul>
+        <button class="book-btn">Reserve Creator Pass</button>
       </div>
     </div>
 
-    <form class="contact-form reveal" id="contactForm" novalidate>
-      <div class="row">
-        <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" required placeholder="Your full name" /></div>
-        <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" required placeholder="you@example.com" /></div>
-      </div>
-      <div class="row">
-        <div class="field"><label for="cf-phone">Phone</label><input id="cf-phone" name="phone" type="tel" placeholder="+91 …" /></div>
-        <div class="field">
-          <label for="cf-interest">Interest</label>
-          <select id="cf-interest" name="interest">
-            <option>Day Visit</option>
-            <option>Photography Session</option>
-            <option>Film / Music Video</option>
-            <option>Private Event</option>
-            <option>Brand Activation</option>
-          </select>
-        </div>
-      </div>
-      <div class="field"><label for="cf-msg">Tell us about your visit</label><textarea id="cf-msg" name="message" placeholder="Group size, dates, ideas…"></textarea></div>
-      <div class="form-success" id="formSuccess">Thank you — your message is on its way. We'll reach out within 24 hours.</div>
-      <button type="submit" class="submit-btn">Send Message →</button>
-    </form>
+    <p class="booking-foot">Looking for film shoots or private buyouts? <a href="mailto:bookings@mayaworld.com">Contact our team</a></p>
   </div>
 </section>
 
@@ -426,9 +336,7 @@
     <div class="foot-links">
       <a href="#zones">Zones</a>
       <a href="#experiences">Experiences</a>
-      <a href="#about">About</a>
-      <a href="#testimonials">Stories</a>
-      <a href="#contact">Contact</a>
+      <a href="#booking">Booking</a>
       <a href="#">Instagram</a>
       <a href="#">TikTok</a>
       <a href="mailto:hello@mayaworld.com">Contact</a>
@@ -561,7 +469,7 @@
   document.getElementById('slideNext').addEventListener('click', ()=>goSlide(1));
   document.getElementById('modalBook').addEventListener('click', ()=>{
     closeModal();
-    requestAnimationFrame(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}));
+    requestAnimationFrame(()=>document.getElementById('booking').scrollIntoView({behavior:'smooth'}));
   });
 
   // Reveal on scroll
@@ -584,26 +492,6 @@
   },{passive:true});
 
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Sticky nav background on scroll
-  const topNav = document.getElementById('topNav');
-  const onScrollNav = ()=>{ topNav.classList.toggle('scrolled', window.scrollY > 40); };
-  window.addEventListener('scroll', onScrollNav, {passive:true});
-  onScrollNav();
-
-  // Contact form
-  const cf = document.getElementById('contactForm');
-  const fs = document.getElementById('formSuccess');
-  cf.addEventListener('submit', e=>{
-    e.preventDefault();
-    const name = document.getElementById('cf-name').value.trim();
-    const email = document.getElementById('cf-email').value.trim();
-    if(!name || !email){ fs.textContent = 'Please share your name and email so we can reach you.'; fs.style.background='rgba(239,68,68,.12)'; fs.style.borderColor='rgba(239,68,68,.4)'; fs.style.color='#fca5a5'; fs.classList.add('show'); return; }
-    fs.textContent = "Thank you — your message is on its way. We'll reach out within 24 hours.";
-    fs.style.background='rgba(16,185,129,.12)'; fs.style.borderColor='rgba(16,185,129,.4)'; fs.style.color='var(--aurora)';
-    fs.classList.add('show');
-    cf.reset();
-  });
 </script>
 </body>
 </html>
